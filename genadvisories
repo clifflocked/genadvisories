@@ -15,7 +15,7 @@ if [[ -f /advisories/current_adv ]]; then
     mv /advisories/current_adv /advisories/old_adv
     wget -q https://linuxfromscratch.org/lfs/advisories/12.3.html -O /advisories/current_adv
     out=$(diff /advisories/old_adv /advisories/current_adv)
-    if [[ "$out" == $'\n' ]]; then
+    if [[ "$out" == "$(echo)" ]]; then
         echo "<h1>New security advisories:</h1></br>$out" | lynx -stdin
     else
         echo "No new security advisories."
